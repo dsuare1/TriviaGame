@@ -1,0 +1,211 @@
+/* GLOBAL STYLES */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+/*************************************************************/
+
+
+/* HEADER */
+
+
+/*************************************************************/
+
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.95)), url(../img/landing-img.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+}
+
+
+/* SEINFELD LOGO */
+
+.logo-container {
+    margin-top: 5%;
+    margin-left: 5%;
+    display: inline-block;
+}
+
+
+/* CONTAINER FOR TEXT BANNER */
+
+.text-vertical-align {
+    margin-top: 275px;
+    margin-left: 35%;
+}
+
+
+/* WRAPPER FOR TEXT BANNER */
+
+.header-wrapper {
+    width: 62%;
+    padding: 2%;
+    margin-bottom: 2%;
+    background-color: rgba(46, 129, 161, 0.25);
+}
+
+
+/* HEADER TEXT STYLINGS */
+
+h1 {
+    color: #fff000;
+    font-size: 4em;
+}
+
+
+/* SUB-HEADER TEXT STYLINGS */
+
+p {
+    color: #f2f2f2;
+    font-size: 1.85em;
+}
+
+
+/* BUTTON TRANSITION */
+
+#start.active {
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+
+/*************************************************************/
+
+
+/* GAME CONTENT */
+
+
+/*************************************************************/
+
+#game-content {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #fcd720;
+}
+
+
+/* GIVES THE TRANSPARENT BG */
+
+.row {
+    background-color: rgba(168, 168, 168, 0.25);
+}
+
+
+/* STYLINGS FOR EACH INDIVIDUAL CONTENT BOX */
+
+.content-container {
+    border: 1px solid black;
+    padding: 2%;
+    margin: 2% 0;
+}
+
+
+/* PUSH TIMER DIV DOWN FROM THE TOP A BIT */
+
+#timer-div {
+    margin-top: 3%;
+}
+
+
+/* STYLE THE INDIVIDUAL TIMER */
+
+#timer {
+    font-size: 2.5em;
+}
+
+#time-ran-out {
+	font-size: 5em;
+}
+
+
+/* PUSH QUESTION DIV DOWN FROM THE TOP A BIT */
+
+#question-div {
+    margin-top: 3%;
+}
+
+
+/* SET STATIC HEIGHT FOR POSSIBLE ANSWERS DIV */
+
+#possible-answers-div {
+    height: 124px;
+}
+
+
+/* STYLINGS FOR EACH POSSIBLE ANSWER */
+
+.possible-answer {
+    height: 44px;
+    margin: 2px 2px;
+    padding-top: 4px;
+    background-color: #2e81a1;
+    color: #fff;
+    font-size: 1.5em;
+    padding-top: 6px;
+}
+
+.possible-answer:hover {
+    color: #2e81a1;
+    background-color: #fff;
+    border: 2px solid #2e81a1;
+    cursor: pointer;
+}
+
+#answer0,
+#answer2 {
+    float: left;
+    width: 48%;
+}
+
+#answer1,
+#answer3 {
+    float: right;
+    width: 48%;
+}
+
+
+/* STATS CONTENT */
+
+#game-stats {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #2e81a1;
+}
+
+.stats-container {
+    border: 1px solid #fcd720;
+    padding: 2%;
+    margin: 2% 0;
+}
+
+#final-msg,
+#correct-answers-div,
+#incorrect-answers-div,
+#unanswered-div,
+#reset-button {
+    margin-top: 10%;
+    color: #fff;
+}
