@@ -215,7 +215,7 @@ function displayQsandAs() {
 
 
 function checkAnswer() {
-    if (numQ === 3) {
+    if (numQ === 15) {
         $("#timerMsg").empty();
         timer.stop();
         timer.reset();
