@@ -12,17 +12,19 @@
 
 <body>
     <header class="header">
-        <div class="logo-container">
-            <img src="assets/img/logo-transparent.png" alt="Seinfeld Logo">
+        <div class="col-lg-11 col-lg-offset-1">
+            <div class="logo-container">
+                <img src="assets/img/logo-transparent.png" alt="Seinfeld Logo">
+            </div>
         </div>
-
-        <a href="#game-content">
-        	<div id="start">Let's see!</div>
-        </a>
-        
         <div class="text-vertical-align header-wrapper">
             <h1>Hellooooooo! La la laaaaa!</h1>
             <p>How much do you know about the show about nothing?</p>
+        </div>
+        <div class="col-lg-12 text-center">
+            <a href="#game-content">
+                <button class="start">Let's see!</button>
+            </a>
         </div>
     </header>
     <section id="game-content">
@@ -31,7 +33,7 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <div id="timer-div" class="content-container text-center">
                         <p id="timerMsg">Time remaining for current question:</p>
-                        <p id="timer">00:30</p>
+                        <p id="timer">00:10</p>
                     </div>
                     <div id="question-div" class="content-container text-center">
                     </div>
@@ -51,7 +53,7 @@
             <div class="row game-content-row">
                 <div class="col-lg-12">
                     <div id="final-msg" class="stats-container text-center">
-                        Thanks for playing! Here's how you did:
+                        <h2>Thanks for playing!<br>Here's how you did:<h2>
                     </div>
                     <div id="correct-answers-div" class="stats-container text-center">
                     </div>
@@ -59,14 +61,18 @@
                     </div>
                     <div id="unanswered-div" class="stats-container text-center">
                     </div>
-                    <div id="reset-button">
+                    <div id="start-button-div">
+                        <a href="#game-content">
+                            <button class="reset">Play again!</button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 </body>
 <script src="http://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app2.js"></script>
 
 </html>

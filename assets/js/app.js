@@ -140,11 +140,11 @@ var questionsAndAnswers = [
 // 30 SECOND TIMER FUNCTION
 //////////////////////////////////////////////////////////////
 var timer = {
-    time: 30,
-    reset: function() {
-        timer.time = 30;
-        $("#timer").html("00:30");
-    },
+    time: 10,
+    // reset: function() {
+    //     timer.time = 30;
+    //     $("#timer").html("00:30");
+    // },
 
     start: function() {
         counter = setInterval(timer.count, 1000);
@@ -196,10 +196,12 @@ var timer = {
 //////////////////////////////////////////////////////////////
 // DISPLAY QUESTION LOGIC W/ INTERVALS AND TIMEOUTS
 //////////////////////////////////////////////////////////////
-function displayQsandAs() {
+function displayQs() {
     activeQuestion = questionsAndAnswers[Math.floor(Math.random() * questionsAndAnswers.length)];
     $("#question-div").html("<p>" + activeQuestion.q + "</p>");
+}
 
+function displayAs() {
     answerChoices = [activeQuestion.correct, activeQuestion.incorrect[0], activeQuestion.incorrect[1], activeQuestion.incorrect[2]];
 
     // shuffle answers
@@ -244,7 +246,9 @@ function displayQsandAs() {
 
         timer.start();
 
-        displayQsandAs();
+        displayQs();
+
+        displayAs();
 
         // console.log(timer);
 
@@ -262,9 +266,11 @@ function checkAnswer() {
             numCorrect += 1;
             $("#timerMsg").html("Correct! Get ready for the next question...");
             timer.stop();
+            $("#timer").empty();
             $("#answers-list").empty();
             $("#question-div").empty();
-            setTimeout(displayQsandAs, 2000);
+            setTimeout(displayQs, 2000);
+            setTimeout(displayAs, 2000);
             setTimeout(timer.reset, 2000);
             setTimeout(timer.start, 2001);
             console.log(numCorrect);
