@@ -153,6 +153,17 @@ var timer = {
         var converted = timer.timeConverter(timer.time);
         $('#timer').html(converted);
 
+        if (timer.time === 0 && numQ === 15) {
+            numUnanswered++;
+            $("#timerMsg").empty();
+            $("#question-div").html("<p>You ran out of time!</p>");
+            setTimeout($("#timerMsg").empty, 2000);
+            timer.stop();
+            timer.reset();
+            $("#answers-list").empty();
+            setTimeout(clearBoard, 2000);
+        }
+
         if (timer.time === 0) {
             numUnanswered++;
             $("#question-div").html("<p>You ran out of time!</p>");
@@ -228,6 +239,13 @@ function displayQsandAs() {
 
 function checkAnswer() {
     if (numQ === 15) {
+        if (userGuess === correctAnswer) {
+            numCorrect++;
+            $("#question-div").html("<p>Correct!</p>");
+        } else {
+            numIncorrect++;
+            $("#question-div").html("<p>Incorrect!</p>");
+        }
         $("#timerMsg").empty();
         timer.stop();
         timer.reset();
