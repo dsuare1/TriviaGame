@@ -14,7 +14,8 @@ $(".game-content-row").css("min-height", $(window).height());
 // GLOBAL VARIABLES
 //////////////////////////////////////////////////////////////
 
-var numQ = 0,
+var gameStarted = false,
+    numQ = 0,
     activeQuestion,
     answerChoices,
     correctAnswer,
@@ -151,6 +152,17 @@ var timer = {
         timer.time--;
         var converted = timer.timeConverter(timer.time);
         $('#timer').html(converted);
+
+        if (timer.time === 0) {
+            numUnanswered++;
+            $("#question-div").html("<p>You ran out of time!</p>");
+            timer.stop();
+            timer.reset();
+            $("#timer").html("00:10");
+            $("#answers-list").empty();
+            setTimeout(timer.start, 2000);
+            setTimeout(displayQsandAs, 2000);
+        }
     },
 
     stop: function() {
@@ -226,16 +238,7 @@ function checkAnswer() {
         $("#question-div").html("<p>Correct!</p>");
         timer.stop();
         timer.reset();
-        $("#timer").html("00:00");
-        $("#answers-list").empty();
-        setTimeout(timer.start, 2000);
-        setTimeout(displayQsandAs, 2000);
-    } else if (timer.time === 0) {      // does not work
-        numUnanswered++;
-        $("#question-div").html("<p>You ran out of time!</p>");
-        timer.stop();
-        timer.reset();
-        $("#timer").html("00:00");
+        $("#timer").html("00:10");
         $("#answers-list").empty();
         setTimeout(timer.start, 2000);
         setTimeout(displayQsandAs, 2000);
@@ -244,7 +247,7 @@ function checkAnswer() {
         $("#question-div").html("<p>Incorrect!</p>");
         timer.stop();
         timer.reset();
-        $("#timer").html("00:00");
+        $("#timer").html("00:10");
         $("#answers-list").empty();
         setTimeout(timer.start, 2000);
         setTimeout(displayQsandAs, 2000);
@@ -261,14 +264,29 @@ function clearBoard() {
     numCorrect = 0;
     numIncorrect = 0;
     numUnanswered = 0;
+    gameStarted = false;
 }
 
+// if (timer.time === 0) { // does not work
+//     numUnanswered++;
+//     $("#question-div").html("<p>You ran out of time!</p>");
+//     timer.stop();
+//     timer.reset();
+//     $("#timer").html("00:10");
+//     $("#answers-list").empty();
+//     setTimeout(timer.start, 2000);
+//     setTimeout(displayQsandAs, 2000);
+// }
 
 //////////////////////////////////////////////////////////////
 // Click Events
 //////////////////////////////////////////////////////////////
 
 $(".start").on("click", function() {
+    if (gameStarted) {
+        return;
+    }
+    gameStarted = true;
     $("#question-div").empty();
     $("#answers-list").empty();
     displayQsandAs();
@@ -280,7 +298,16 @@ $("#answers-list").on("click", ".possible-answer", function() {
     checkAnswer();
 });
 
+
+//////////////////////////////////////////////////////////////
+// End of game
+//////////////////////////////////////////////////////////////
+
 $(".reset").on("click", function() {
+    if (gameStarted) {
+        return;
+    }
+    gameStarted = true;
     $("#correct-answers-div").empty();
     $("#incorrect-answers-div").empty();
     $("#unanswered-div").empty();
@@ -288,8 +315,3 @@ $(".reset").on("click", function() {
     displayQsandAs();
     timer.start();
 });
-
-
-//////////////////////////////////////////////////////////////
-// End of game
-//////////////////////////////////////////////////////////////
