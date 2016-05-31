@@ -21,7 +21,9 @@ var gameStarted = false,
     correctAnswer,
     numCorrect = 0,
     numIncorrect = 0,
-    numUnanswered = 0;
+    numUnanswered = 0,
+    themeMp3 = new Audio("assets/audio/theme.mp3"),
+    cutMp3 = new Audio("assets/audio/cut.mp3");
 
 
 //////////////////////////////////////////////////////////////
@@ -240,9 +242,11 @@ function displayQsandAs() {
 function checkAnswer() {
     if (numQ === 15) {
         if (userGuess === correctAnswer) {
+            themeMp3.play();
             numCorrect++;
             $("#question-div").html("<p>Correct!</p>");
         } else {
+            themeMp3.play();
             numIncorrect++;
             $("#question-div").html("<p>Incorrect!</p>");
         }
@@ -262,13 +266,13 @@ function checkAnswer() {
         setTimeout(displayQsandAs, 2000);
     } else {
         numIncorrect++;
-        $("#question-div").html("<p>Incorrect!</p>");
+        $("#question-div").html("<p>Incorrect!<br><br>The correct answer was:<br><strong>" + questionsAndAnswers[numQ - 1].correct + "<strong></p>");
         timer.stop();
         timer.reset();
         $("#timer").html("00:10");
         $("#answers-list").empty();
-        setTimeout(timer.start, 2000);
-        setTimeout(displayQsandAs, 2000);
+        setTimeout(timer.start, 3500);
+        setTimeout(displayQsandAs, 3500);
     }
 }
 
@@ -300,7 +304,13 @@ function clearBoard() {
 // Click Events
 //////////////////////////////////////////////////////////////
 
+$(document).ready(function() {
+    themeMp3.play();
+});
+
 $(".start").on("click", function() {
+    themeMp3.pause();
+    cutMp3.play();
     if (gameStarted) {
         return;
     }
@@ -322,6 +332,7 @@ $("#answers-list").on("click", ".possible-answer", function() {
 //////////////////////////////////////////////////////////////
 
 $(".reset").on("click", function() {
+    cutMp3.play();
     if (gameStarted) {
         return;
     }

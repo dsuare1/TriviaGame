@@ -72,8 +72,8 @@ h1, h2 {
 /* SUB-HEADER TEXT STYLINGS */
 
 p {
-    color: #f2f2f2;
-    font-size: 1.85em;
+    color: #e30922;
+    font-size: 2em;
 }
 
 /* START BUTTON STYLES */
@@ -212,6 +212,7 @@ button.reset:hover {
     /*border: 1px solid #fcd720;*/
     padding: 2%;
     margin: 2% 0;
+    color: #fff000;
 }
 
 #final-msg,
@@ -221,8 +222,4 @@ button.reset:hover {
 #reset-button {
     margin-top: 2%;
     color: #fff;
-}
-
-#reset-button {
-
 }
