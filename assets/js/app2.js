@@ -289,17 +289,6 @@ function clearBoard() {
     gameStarted = false;
 }
 
-// if (timer.time === 0) { // does not work
-//     numUnanswered++;
-//     $("#question-div").html("<p>You ran out of time!</p>");
-//     timer.stop();
-//     timer.reset();
-//     $("#timer").html("00:10");
-//     $("#answers-list").empty();
-//     setTimeout(timer.start, 2000);
-//     setTimeout(displayQsandAs, 2000);
-// }
-
 //////////////////////////////////////////////////////////////
 // Click Events
 //////////////////////////////////////////////////////////////
@@ -319,6 +308,9 @@ $(".start").on("click", function() {
     $("#answers-list").empty();
     displayQsandAs();
     timer.start();
+    $("html, body").animate({
+        scrollTop: $("#game-content").offset().top
+    }, 1000);
 });
 
 $("#answers-list").on("click", ".possible-answer", function() {
@@ -332,6 +324,7 @@ $("#answers-list").on("click", ".possible-answer", function() {
 //////////////////////////////////////////////////////////////
 
 $(".reset").on("click", function() {
+    themeMp3.pause();
     cutMp3.play();
     if (gameStarted) {
         return;
@@ -343,4 +336,7 @@ $(".reset").on("click", function() {
     $("#timerMsg").html("Time remaining for current question:");
     displayQsandAs();
     timer.start();
+    $("html, body").animate({
+        scrollTop: $("#game-content").offset().top
+    }, 1000);
 });
